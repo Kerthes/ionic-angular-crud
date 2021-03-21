@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Les Jeux</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Création d'un nouveau jeu</h2>
+  <button ion-button (click)="onGoToCreate()">Création</button>
+  <h2>List de mes jeux</h2>
+  <ion-grid>
+    <ion-row>
+      <p>
+        <span>Rouge = hard</span> •
+        <span>Orange = ok</span> •
+        <span>Vert = soft</span>
+      </p>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 *ngFor="let game of games">
+        <ion-list (click)="onGoToGame(game.data.name, game.id)">
+
+          <!-- Change color according to the difficulty -->
+          <ion-item text-center class="color" *ngIf="game.data.difficulty == 'hard'" class="red">
+            <img  height="100" [src]="game.data.image">
+          </ion-item>
+
+          <ion-item text-center class="color" *ngIf="game.data.difficulty == 'ok'" class="orange">
+            <img  height="100" [src]="game.data.image">
+          </ion-item>
+
+          <ion-item text-center class="color" *ngIf="game.data.difficulty == 'soft'" class="green">
+            <img  height="100" [src]="game.data.image"/>
+          </ion-item>
+
+          <ion-item>
+            {{game.data.name}}
+          </ion-item>
+          <ion-item>
+            {{game.data.player}} : player
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <button ion-button (click)="onGoAccessModif()">Rendre Modifiable</button>
+
+  <div *ngIf="modif; then content else otherContent"></div>
+  <ng-template #content>
+    <ion-item>
+      <ion-label>Image</ion-label>
+      <ion-input type="text" [(ngModel)]="game.data.image"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nom</ion-label>
+      <ion-input type="text" [(ngModel)]="game.data.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Difficulté</ion-label>
+      <ion-select [(ngModel)]="game.data.difficulty" value="game.data.difficulty">
+        <ion-option value="hard">Hard</ion-option>
+        <ion-option value="soft">Soft</ion-option>
+        <ion-option value="ok">Ok</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <br/>
+      <ion-input type="textarea" [(ngModel)]="game.data.description"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nombre de joueur : </ion-label>
+      <ion-input type="text" [(ngModel)]="game.data.player"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Règles</ion-label>
+      <ion-input type="text" [(ngModel)]="game.data.rules"></ion-input>
+    </ion-item>
+    <br>
+    <div class="text-center">
+      <button ion-button (click)="onModif()">Modifier</button>
+    </div>
+  </ng-template>
+  <ng-template #otherContent>
+    <ion-grid *ngIf="game">
+      <ion-row>
+        <ion-col col-6>
+          <button ion-button (click)="onDelete()">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <img [src]="game.data.image" [alt]="game.data.name">
+        </ion-col>
+        <ion-col col-6>
+          <strong>Nom :</strong> <br>
+          {{game.data.name}} <br>
+          <br>
+          <strong>Nombre de joueur : </strong><br>
+          {{game.data.player}} <br>
+          <strong>Difficulté : </strong>
+          {{game.data.difficulty}} <br>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <strong>Description :</strong> <br>
+          <p class="text-justify">
+            {{game.data.description}}
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <strong>Règles du jeu :</strong> <br>
+          <p class="text-justify">
+            {{game.data.rules}}
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-template>
+
+</ion-content>

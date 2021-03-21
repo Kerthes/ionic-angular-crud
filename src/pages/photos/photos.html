@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Photos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <img *ngIf="imageUrl" [src]="imageUrl">
+  <div text-center>
+    <button ion-button round icon-only (click)="onPicture()">
+      <ion-icon name="camera"></ion-icon>
+    </button>
+  </div>
+</ion-content>
+

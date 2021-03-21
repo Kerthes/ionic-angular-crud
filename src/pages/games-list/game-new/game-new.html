@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Création d'un jeu</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-item>
+      <ion-label>Image</ion-label>
+      <ion-input type="text"  [(ngModel)]="game.image"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nom</ion-label>
+      <ion-input type="text" [(ngModel)]="game.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Difficulté</ion-label>
+      <ion-select [(ngModel)]="game.difficulty">
+        <ion-option value="hard">Hard</ion-option>
+        <ion-option value="soft">Soft</ion-option>
+        <ion-option value="ok">Ok</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <br/>
+      <ion-input type="textarea" [(ngModel)]="game.description"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nombre de joueur : </ion-label>
+      <ion-input type="text" [(ngModel)]="game.player"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Règles</ion-label>
+      <ion-input type="text" [(ngModel)]="game.rules"></ion-input>
+    </ion-item>
+    <br>
+    <div class="text-center">
+      <button ion-button (click)="onAdd()">Créer</button>
+    </div>
+</ion-content>
